@@ -1,20 +1,22 @@
 import './App.scss';
 import './reset.scss';
 
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
 
 function App() {
   return (
-    <Router>
+    <HashRouter
+      history={createBrowserHistory({ basename: process.env.PUBLIC_URL })}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
-    </Router>
+    </HashRouter>
   );
 }
 
